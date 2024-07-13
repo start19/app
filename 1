@@ -1,0 +1,1528 @@
+1. Design an Android application to create and customize a Visiting Card. 
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:background="#FFFFFF" 
+    tools:context=".MainActivity"> 
+ 
+    <TextView 
+        android:id="@+id/textView1" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="200dp" 
+        android:layout_marginLeft="30dp" 
+        android:text="Nitte Meenakshi Institute Technology" 
+        android:textColor="#E91E63" 
+        android:textSize="20sp" 
+        android:textStyle="bold" /> 
+ 
+    <ImageView 
+        android:id="@+id/imageView3" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="80dp" 
+        android:layout_marginBottom="495dp" 
+        app:srcCompat="@drawable/nittelogo"> 
+    </ImageView> 
+ 
+ 
+    <View 
+        android:id="@+id/view1" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:background="#4444" 
+        android:layout_alignParentBottom="true" 
+        android:layout_marginBottom="487dp" 
+        /> 
+ 
+    <TextView 
+        android:id="@+id/textView2" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="300dp" 
+        android:layout_marginLeft="140dp" 
+        android:text="Harsha B R" 
+        android:textSize="24sp" 
+        android:textStyle="bold" /> 
+ 
+    <TextView 
+        android:id="@+id/textView3" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="350dp" 
+        android:layout_marginLeft="70dp" 
+        android:text="Assistant Professor-ISE" 
+        android:textSize="24sp" /> 
+ 
+    <TextView 
+        android:id="@+id/textView4" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="400dp" 
+        android:layout_marginLeft="30dp" 
+        android:text="Address:Yelahanka, | Bangalore - 560 064" 
+        android:textAlignment="center" 
+        android:textSize="24sp" /> 
+ 
+    <TextView 
+        android:id="@+id/textView5" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="450dp" 
+        android:layout_marginLeft="90dp" 
+        android:text="Ph No: 9108380566" 
+        android:textSize="24sp" /> 
+ 
+    <TextView 
+        android:id="@+id/textView6" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="500dp" 
+        android:layout_marginLeft="50dp" 
+        android:text="Email Id: harsha.br@nmit.ac.in" 
+        android:textAlignment="center" 
+        android:textSize="24sp" /> 
+ 
+ 
+</RelativeLayout> 
+ 
+MainActivity.java 
+import android.os.Bundle; 
+ 
+import androidx.activity.EdgeToEdge; 
+import androidx.appcompat.app.AppCompatActivity; 
+ 
+public class MainActivity extends AppCompatActivity { 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        EdgeToEdge.enable(this); 
+        setContentView(R.layout.activity_main); 
+    } 
+ 
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+Add image in the drawable folder 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2. Develop an application aimed at enhancing and extending the functionalities 
+offered by the Android user interface library.  
+  a) Share data between activities.  
+. b) Utilize Events and Event Listeners.  
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    tools:context=".MainActivity"> 
+ 
+<TextView 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:layout_marginLeft="20dp" 
+    android:layout_marginTop="100dp" 
+    android:text="Send Data From One Activity to Another Activity" 
+    android:textColor="#E91E63" 
+    android:textSize="18sp" 
+    android:textStyle="bold"> 
+ 
+</TextView> 
+ 
+ 
+    <EditText 
+        android:id="@+id/name" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="165dp" 
+        android:layout_marginTop="200dp" 
+        android:text="Name" 
+        > 
+    </EditText> 
+ 
+    <EditText 
+        android:id="@+id/usn" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="170dp" 
+        android:layout_marginTop="250dp" 
+        android:text="USN" 
+        > 
+    </EditText> 
+ 
+    <EditText 
+        android:id="@+id/collegeName" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="140dp" 
+        android:layout_marginTop="300dp" 
+        android:text="College Name" 
+        > 
+    </EditText> 
+ 
+    <Button 
+android:id="@+id/SendData" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_marginLeft="150dp" 
+android:layout_marginTop="400dp" 
+android:text="Send Data"> 
+</Button> 
+</RelativeLayout> 
+MainActivity.java 
+import android.content.Intent; 
+import android.os.Bundle; 
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.EditText; 
+import androidx.activity.EdgeToEdge; 
+import androidx.appcompat.app.AppCompatActivity; 
+public class MainActivity extends AppCompatActivity { 
+EditText name; 
+EditText usn; 
+EditText collegeName; 
+Button sendBtn; 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+EdgeToEdge.enable(this); 
+setContentView(R.layout.activity_main); 
+name = findViewById(R.id.name); 
+usn = findViewById(R.id.usn); 
+collegeName = findViewById(R.id.collegeName); 
+sendBtn = findViewById(R.id.SendData); 
+sendBtn.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { 
+String strName=name.getText().toString(); 
+String strUsn=usn.getText().toString(); 
+String strCollegeName=collegeName.getText().toString(); 
+Intent intent =new Intent(getApplicationContext(), 
+SecondActivity.class); 
+intent.putExtra("name",strName); 
+intent.putExtra("usn",strUsn); 
+intent.putExtra("collegeName",strCollegeName); 
+startActivity(intent); 
+} 
+}); 
+} 
+} 
+activity_main2.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    tools:context=".SecondActivity"> 
+ 
+    <TextView 
+        android:id="@+id/receiver_name_id" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="200dp" 
+        android:layout_marginTop="200dp"> 
+    </TextView> 
+ 
+    <TextView 
+        android:id="@+id/receiver_usn_id" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="200dp" 
+        android:layout_marginTop="250dp"> 
+    </TextView> 
+ 
+    <TextView 
+        android:id="@+id/receiver_collegeName_id" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="200dp" 
+        android:layout_marginTop="300dp" 
+        > 
+    </TextView> 
+ 
+</RelativeLayout> 
+ 
+ 
+SecondActivity.java 
+ 
+ 
+import android.content.Intent; 
+import android.os.Bundle; 
+import android.widget.TextView; 
+ 
+import androidx.appcompat.app.AppCompatActivity; 
+ 
+public class SecondActivity extends AppCompatActivity{ 
+    TextView receiver_name_id; 
+    TextView receiver_usn_id; 
+    TextView receiver_collegeName_id; 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main2); 
+ 
+        receiver_name_id = findViewById(R.id.receiver_name_id); 
+        receiver_usn_id = findViewById(R.id.receiver_usn_id); 
+        receiver_collegeName_id = 
+findViewById(R.id.receiver_collegeName_id); 
+ 
+Intent intent = getIntent(); 
+String strName = intent.getStringExtra("name"); 
+receiver_name_id.setText(strName); 
+String strUsn = intent.getStringExtra("usn"); 
+receiver_usn_id.setText(strUsn); 
+String strCollegeName = intent.getStringExtra("collegeName"); 
+receiver_collegeName_id.setText(strCollegeName); 
+} 
+} 
+AndroidManifest.xml 
+<activity android:name=".SecondActivity"></activity> 
+3. Develop an application to demonstrate the life-cycle methods of an activity 
+using Toast Notifications.  
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:id="@+id/main" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".MainActivity"> 
+<TextView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:text="Activity LifeCycle Demo" 
+app:layout_constraintBottom_toBottomOf="parent" 
+app:layout_constraintEnd_toEndOf="parent" 
+app:layout_constraintStart_toStartOf="parent" 
+app:layout_constraintTop_toTopOf="parent" /> 
+</androidx.constraintlayout.widget.ConstraintLayout> 
+MainActivity.java 
+import android.os.Bundle; 
+import androidx.appcompat.app.AppCompatActivity; 
+import android.util.Log; 
+import android.widget.Toast; 
+public class MainActivity extends AppCompatActivity { 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main); 
+Toast toast = Toast.makeText(getApplicationContext(), "onCreate 
+Called", Toast.LENGTH_SHORT); 
+toast.show(); 
+Log.d("lifecycle","onCreate invoked"); 
+} 
+@Override 
+protected void onStart() { 
+super.onStart(); 
+Toast toast = Toast.makeText(getApplicationContext(), "onStart 
+Called", Toast.LENGTH_LONG); 
+toast.show(); 
+Log.d("lifecycle","onStart invoked"); 
+} 
+    @Override 
+    protected void onResume() { 
+        super.onResume(); 
+        Toast toast = Toast.makeText(getApplicationContext(), "onResume 
+Called", Toast.LENGTH_LONG); 
+        toast.show(); 
+        Log.d("lifecycle","onResume invoked"); 
+    } 
+    @Override 
+    protected void onPause() { 
+        super.onPause(); 
+        Toast toast = Toast.makeText(getApplicationContext(), "onPause 
+Called", Toast.LENGTH_LONG); 
+        toast.show(); 
+        Log.d("lifecycle","onPause invoked"); 
+    } 
+    @Override 
+    protected void onStop() { 
+        super.onStop(); 
+        Toast toast = Toast.makeText(getApplicationContext(), "onStop 
+Called", Toast.LENGTH_LONG); 
+        toast.show(); 
+        Log.d("lifecycle","onStop invoked"); 
+    } 
+    @Override 
+    protected void onRestart() { 
+        super.onRestart(); 
+        Toast toast = Toast.makeText(getApplicationContext(), "onRestart 
+Called", Toast.LENGTH_LONG); 
+        toast.show(); 
+        Log.d("lifecycle","onRestart invoked"); 
+    } 
+    @Override 
+    protected void onDestroy() { 
+        super.onDestroy(); 
+        Toast toast = Toast.makeText(getApplicationContext(), "onDestroy 
+Called", Toast.LENGTH_LONG); 
+        toast.show(); 
+        Log.d("lifecycle","onDestroy invoked"); 
+    } 
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4. Design an application to declare layouts statically as an XML resources. 
+ 
+a) Declare GridLayout statically as an XML resource. 
+b) Declare TableLayout statically as an XML resource. 
+ 
+ 
+a. activity_main.xml 
+ 
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:columnCount="2" 
+    android:orientation="horizontal" 
+    android:rowCount="4"> 
+ 
+ 
+    <ImageButton 
+        android:id="@+id/imageButton1" 
+        android:layout_width="160dp" 
+        android:layout_height="90dp" 
+        android:src="@drawable/scene1" /> 
+    <ImageButton 
+        android:id="@+id/imageButton2" 
+        android:layout_width="160dp" 
+        android:layout_height="90dp" 
+        android:layout_gravity="center_vertical" 
+        android:src="@drawable/scene2" /> 
+ 
+    <ImageButton 
+        android:id="@+id/imageButton3" 
+        android:layout_width="160dp" 
+        android:layout_height="90dp" 
+        android:layout_gravity="center_vertical" 
+        android:src="@drawable/scene3" /> 
+    <ImageButton 
+        android:id="@+id/imageButton4" 
+        android:layout_width="160dp" 
+        android:layout_height="90dp" 
+        android:layout_gravity="center_vertical" 
+        android:src="@drawable/scene4" /> 
+ 
+    <ImageButton 
+        android:id="@+id/imageButton5" 
+        android:layout_width="160dp" 
+        android:layout_height="90dp" 
+        android:layout_gravity="center_vertical" 
+        android:src="@drawable/scene5" /> 
+    <ImageButton 
+        android:id="@+id/imageButton6" 
+        android:layout_width="160dp" 
+        android:layout_height="90dp" 
+        android:layout_gravity="center_vertical" 
+        android:src="@drawable/scene6" /> 
+</GridLayout> 
+ 
+ 
+Go to app > res > drawable >  
+Add all the images in scene1 to scene6  (Download the any image from google and it here 
+by naming it as scene1, scene2 etc…) 
+ 
+MainActivity.java 
+ 
+import android.os.Bundle; 
+import androidx.activity.EdgeToEdge; 
+import androidx.appcompat.app.AppCompatActivity; 
+ 
+public class MainActivity extends AppCompatActivity { 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        EdgeToEdge.enable(this); 
+        setContentView(R.layout.activity_main); 
+ 
+    } 
+} 
+ 
+ 
+b. activity_main.xml 
+ 
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent"> 
+ 
+    <!-- Add your table rows and views here --> 
+ 
+    <TextView 
+        android:id="@+id/txt" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="ICC Ranking of Players:" 
+        android:textSize = "20dp" 
+        android:textStyle="bold"> 
+ 
+    </TextView> 
+ 
+ 
+    <TableRow android:background="#51B435" android:padding="10dp"> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Rank" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Player" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Team" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Points" /> 
+    </TableRow> 
+    <TableRow android:background="#F0F7F7" android:padding="5dp"> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="1" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Virat Kohli" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="IND" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="895" /> 
+    </TableRow> 
+    <TableRow android:background="#F0F7F7" android:padding="5dp"> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="2" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Rohit Sharma" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="IND" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="863" /> 
+ 
+    </TableRow> 
+    <TableRow android:background="#F0F7F7" android:padding="5dp"> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="3" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Faf du Plessis" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="PAK" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="834" /> 
+ 
+    </TableRow> 
+ 
+    <TableRow android:background="#F0F7F7" android:padding="5dp"> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="4" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Steven Smith" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="AUS" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="820" /> 
+ 
+    </TableRow> 
+    <TableRow android:background="#F0F7F7" android:padding="5dp"> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="5" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="Ross Taylor" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="NZ" /> 
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="1" 
+            android:text="817" /> 
+ 
+    </TableRow> 
+</TableLayout> 
+ 
+MainActivity.java 
+import android.os.Bundle; 
+ 
+import androidx.activity.EdgeToEdge; 
+import androidx.appcompat.app.AppCompatActivity; 
+ 
+public class MainActivity extends AppCompatActivity { 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        EdgeToEdge.enable(this); 
+        setContentView(R.layout.activity_main); 
+ 
+    } 
+} 
+ 
+ 
+5) Develop an application to Generate Context Menu. 
+ 
+ 
+activity_main.xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- Relative Layout to display all the details --> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:id="@+id/relLayout" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:background="#fff" 
+    android:padding="16dp" 
+    tools:context=".MainActivity"> 
+ 
+    <TextView 
+        android:id="@+id/textView" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="10dp" 
+        android:text="Context Menu Demo" 
+        android:textColor="#000" 
+        android:textSize="20sp" 
+        android:textStyle="bold" /> 
+ 
+    <EditText 
+        android:id="@+id/contextEditText1" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="60dp" 
+        android:text="Enter Text Long press me!" 
+        android:textColor="#000" 
+        android:textSize="20sp" 
+        android:textStyle="bold" /> 
+ 
+ 
+    <EditText 
+        android:id="@+id/contextEditText2" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="110dp" 
+        android:text="Paste Your Text" 
+        android:textColor="#000" 
+        android:textSize="20sp" 
+        android:textStyle="bold" /> 
+ 
+ 
+ 
+    <Button 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/button" 
+        android:text="Close app" 
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="190dp" 
+         /> 
+</RelativeLayout> 
+ 
+ 
+MainActivity.java 
+ 
+ 
+import android.content.ClipData; 
+import android.content.ClipboardManager; 
+import android.os.Bundle; 
+import android.view.ContextMenu; 
+import android.view.MenuItem; 
+import android.view.View; 
+import android.widget.EditText; 
+import androidx.appcompat.app.AppCompatActivity; 
+ 
+ 
+public class MainActivity extends AppCompatActivity { 
+    EditText editText; 
+    EditText editText1; 
+    ClipboardManager myClipboard; 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+ 
+        // Link those objects with their respective id's that we have given 
+in .XML file 
+        editText = (EditText) findViewById(R.id.contextEditText1); 
+        editText1 = (EditText) findViewById(R.id.contextEditText2); 
+ 
+    } 
+ 
+    @Override 
+ public void onCreateContextMenu(ContextMenu menu, View v, 
+ContextMenu.ContextMenuInfo menuInfo) { 
+        super.onCreateContextMenu(menu, v, menuInfo); 
+        // you can set menu header with title icon etc 
+        menu.setHeaderTitle("Choose a color"); 
+        // add menu items 
+        menu.add(0, v.getId(), 0, "Copy"); 
+        menu.add(0, v.getId(), 0, "Paste"); 
+        menu.add(0, v.getId(), 0, "Cut"); 
+    } 
+ 
+    // menu item select listener 
+    @Override 
+    public boolean onContextItemSelected(MenuItem item) { 
+        if (item.getTitle() == "Copy") { 
+            // cast the received View to TextView so that you can get its 
+text 
+            myClipboard = 
+(ClipboardManager)getSystemService(CLIPBOARD_SERVICE); 
+            ClipData myClip; 
+            myClip = ClipData.newPlainText("text", 
+editText.getText().toString()); 
+            myClipboard.setPrimaryClip(myClip); 
+        } else if (item.getTitle() == "Paste") { 
+ 
+            ClipData abc = myClipboard.getPrimaryClip(); 
+            ClipData.Item item1 = abc.getItemAt(0); 
+ 
+            String text = item1.getText().toString(); 
+            editText1.setText(text); 
+        } else if (item.getTitle() == "Cut") { 
+            myClipboard = 
+(ClipboardManager)getSystemService(CLIPBOARD_SERVICE); 
+            ClipData myClip; 
+            myClip = ClipData.newPlainText("text", 
+editText.getText().toString()); 
+            editText.setText(""); 
+            myClipboard.setPrimaryClip(myClip); 
+        } 
+        return true; 
+    } 
+} 
+ 
+ 
+6) Develop an application to Generate Options Menu. 
+ 
+ 
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<android.support.constraint.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    tools:context=".MainActivity"> 
+ 
+    <TextView 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:text="Options Menu Demo" 
+        app:layout_constraintBottom_toBottomOf="parent" 
+        app:layout_constraintEnd_toEndOf="parent" 
+        app:layout_constraintStart_toStartOf="parent" 
+        app:layout_constraintTop_toTopOf="parent" /> 
+</android.support.constraint.ConstraintLayout> 
+MainActivity.java 
+import android.support.v7.app.AppCompatActivity; 
+import android.os.Bundle; 
+import android.view.Menu; 
+import android.view.MenuInflater; 
+public class MainActivity extends AppCompatActivity { 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main); 
+} 
+@Override 
+public boolean onCreateOptionsMenu(Menu menu) { 
+MenuInflater in = getMenuInflater(); 
+in.inflate(R.menu.option_menu,menu); 
+return super.onCreateOptionsMenu(menu); 
+} 
+} 
+colors.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+<color name="purple_200">#FFBB86FC</color> 
+<color name="purple_500">#FF6200EE</color> 
+<color name="purple_700">#FF3700B3</color> 
+<color name="teal_200">#FF03DAC5</color> 
+<color name="teal_700">#FF018786</color> 
+<color name="black">#FF000000</color> 
+<color name="white">#FFFFFFFF</color> 
+</resources> 
+strings.xml 
+<resources> 
+<string name="app_name">Options Menu</string> 
+</resources> 
+Go to res > right click> New> Directory > name it as menu > 
+Under menu > right click > New > Menu Resource file name 
+it as option_menu.xml 
+option_menu.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto"> 
+<item 
+android:id="@+id/item1" 
+android:title="Home" 
+app:showAsAction="never" 
+/> 
+<item 
+android:id="@+id/item2" 
+android:title="About" 
+app:showAsAction="never" 
+/> 
+<item 
+android:id="@+id/item3" 
+android:title="Contact" 
+app:showAsAction="never" 
+/> 
+</menu> 
+7) Develop an application to generate alert dialogs within your activity.  
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- Relative Layout to display all the details --> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:id="@+id/relLayout" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:background="#fff" 
+android:padding="16dp" 
+tools:context=".MainActivity"> 
+<TextView 
+android:id="@+id/textView" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_centerHorizontal="true" 
+android:layout_marginTop="10dp" 
+android:text="Alert Dialog Demo" 
+android:textColor="#000" 
+android:textSize="20sp" 
+android:textStyle="bold" /> 
+<Button 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/button" 
+android:text="Close app" 
+android:layout_centerHorizontal="true" 
+android:layout_marginTop="190dp" 
+/> 
+</RelativeLayout> 
+MainActivity.java 
+import android.app.AlertDialog; 
+import android.content.DialogInterface; 
+import android.os.Bundle; 
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.Toast; 
+import androidx.activity.EdgeToEdge; 
+import androidx.appcompat.app.AppCompatActivity; 
+public class MainActivity extends AppCompatActivity { 
+Button closeButton; 
+AlertDialog.Builder builder; 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+EdgeToEdge.enable(this); 
+setContentView(R.layout.activity_main); 
+closeButton = (Button) findViewById(R.id.button); 
+builder = new AlertDialog.Builder(this); 
+closeButton.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View v) { 
+//Uncomment the below code to Set the message and title 
+from the strings.xml file 
+//   builder.setMessage(R.string.dialog_message) 
+.setTitle(R.string.dialog_title); 
+//Setting message manually and performing action on button 
+click 
+?") 
+builder.setMessage("Do you want to close this application 
+.setCancelable(false) 
+.setPositiveButton("Yes", new 
+DialogInterface.OnClickListener() { 
+public void onClick(DialogInterface dialog, int 
+id) { 
+finish(); 
+                                Toast.makeText(getApplicationContext(), 
+"you choose yes action for alertbox", 
+                                        Toast.LENGTH_SHORT).show(); 
+                            } 
+                        }) 
+                        .setNegativeButton("No", new 
+DialogInterface.OnClickListener() { 
+                            public void onClick(DialogInterface dialog, int 
+id) { 
+                                //  Action for 'NO' Button 
+                                dialog.cancel(); 
+                                Toast.makeText(getApplicationContext(), 
+"you choose no action for alertbox", 
+                                        Toast.LENGTH_SHORT).show(); 
+                            } 
+                        }); 
+                //Creating dialog box 
+                AlertDialog alert = builder.create(); 
+                //Setting the title manually 
+                alert.setTitle("AlertDialogExample"); 
+                alert.show(); 
+            } 
+        }); 
+    } 
+} 
+ 
+ 
+ 
+8) Develop an application to Utilize a ArrayAdapter to connect a data 
+source to a List View.  
+ 
+activity_main.xml 
+ 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    tools:context=".MainActivity"> 
+ 
+    <TextView 
+        android:id="@+id/titlepage" 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center" 
+        android:text="ListView Demo" 
+        android:layout_marginTop="110dp" 
+        android:textColor="#000" /> 
+ 
+    <ListView 
+        android:id="@+id/simpleListView" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:divider="#000" 
+        android:dividerHeight="2dp" 
+        android:layout_marginTop="200dp"/> 
+ 
+</RelativeLayout> 
+activity_list_view.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:orientation="vertical"> 
+<TextView 
+android:id="@+id/textView" 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:layout_gravity="center" 
+android:textColor="#000" /> 
+</LinearLayout> 
+MainActivity.java  
+import android.os.Bundle; 
+import android.widget.ArrayAdapter; 
+import android.widget.ListView; 
+import androidx.activity.EdgeToEdge; 
+import androidx.appcompat.app.AppCompatActivity; 
+public class MainActivity extends AppCompatActivity { 
+// Array of strings... 
+ListView simpleList; 
+String courseList[] = {"C-Programming", "Data Structure", "Database", 
+"Python", 
+"Java", "Operating System", "Compiler Design", "Android 
+Development"}; 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+EdgeToEdge.enable(this); 
+setContentView(R.layout.activity_main); 
+simpleList = (ListView) findViewById(R.id.simpleListView); 
+ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, 
+R.layout.activity_list_view, R.id.textView, courseList); 
+simpleList.setAdapter(arrayAdapter); 
+} 
+} 
+output:  
+9. Develop an application that utilizes an SQLite Database that perform operations such as 
+insertion, updating, removal, and retrieval of data from an SQLite Database. 
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:padding="10dp" 
+tools:context=".MainActivity"> 
+<TextView 
+android:id="@+id/texttitle" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:text="Please enter the details below" 
+android:textSize="24dp" 
+android:layout_marginTop="20dp"/> 
+<EditText 
+android:id="@+id/name" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:layout_below="@+id/texttitle" 
+android:hint="Name" 
+android:inputType="textPersonName" 
+android:textSize="24dp" /> 
+<EditText 
+android:id="@+id/contact" 
+android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/name" 
+        android:hint="Contact" 
+        android:inputType="number" 
+        android:textSize="24dp" /> 
+ 
+    <EditText 
+        android:id="@+id/dob" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/contact" 
+        android:hint="Date of Birth" 
+        android:inputType="number" 
+        android:textSize="24dp" /> 
+ 
+    <Button 
+        android:id="@+id/btnInsert" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/dob" 
+        android:layout_marginTop="30dp" 
+        android:text="Insert New Data" 
+        android:textSize="24dp" /> 
+ 
+    <Button 
+        android:id="@+id/btnUpdate" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/btnInsert" 
+        android:text="Update Data" 
+        android:textSize="24dp" /> 
+ 
+    <Button 
+        android:id="@+id/btnDelete" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/btnUpdate" 
+        android:text="Delete Existing Data" 
+        android:textSize="24dp" /> 
+ 
+    <Button 
+        android:id="@+id/btnView" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/btnDelete" 
+        android:text="View Data" 
+        android:textSize="24dp" /> 
+</RelativeLayout> 
+ 
+MainActivity.java 
+package com.example.program6; 
+ 
+import androidx.appcompat.app.AlertDialog; 
+import androidx.appcompat.app.AppCompatActivity; 
+ 
+import android.database.Cursor; 
+import android.os.Bundle; 
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.EditText; 
+import android.widget.Toast; 
+ 
+public class MainActivity extends AppCompatActivity { 
+    EditText name, contact, dob; 
+    Button insert, update, delete, view; 
+    DBHelper DB; 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+        name = findViewById(R.id.name); 
+        contact = findViewById(R.id.contact); 
+        dob = findViewById(R.id.dob); 
+        insert = findViewById(R.id.btnInsert); 
+        update = findViewById(R.id.btnUpdate); 
+        delete = findViewById(R.id.btnDelete); 
+        view = findViewById(R.id.btnView); 
+        DB = new DBHelper(this); 
+        insert.setOnClickListener(new View.OnClickListener() { 
+            @Override 
+            public void onClick(View view) { 
+                String nameTXT = name.getText().toString(); 
+                String contactTXT = contact.getText().toString(); 
+                String dobTXT = dob.getText().toString(); 
+ 
+                Boolean checkinsertdata = DB.insertuserdata(nameTXT, 
+contactTXT, dobTXT); 
+                if(checkinsertdata==true) 
+                    Toast.makeText(MainActivity.this, "New Entry Inserted", 
+                            Toast.LENGTH_SHORT).show(); 
+                else 
+                    Toast.makeText(MainActivity.this, "New Entry Not 
+Inserted", 
+                            Toast.LENGTH_SHORT).show(); 
+            }        }); 
+        update.setOnClickListener(new View.OnClickListener() { 
+            @Override 
+            public void onClick(View view) { 
+                String nameTXT = name.getText().toString(); 
+                String contactTXT = contact.getText().toString(); 
+                String dobTXT = dob.getText().toString(); 
+ 
+                Boolean checkupdatedata = DB.updateuserdata(nameTXT, 
+contactTXT, dobTXT); 
+                if(checkupdatedata==true) 
+                    Toast.makeText(MainActivity.this, "Entry Updated", 
+                            Toast.LENGTH_SHORT).show(); 
+                else 
+                    Toast.makeText(MainActivity.this, "New Entry Not 
+Updated", 
+                            Toast.LENGTH_SHORT).show(); 
+            }        }); 
+ 
+        delete.setOnClickListener(new View.OnClickListener() { 
+            @Override 
+            public void onClick(View view) { 
+                String nameTXT = name.getText().toString(); 
+                Boolean checkudeletedata = DB.deletedata(nameTXT); 
+                if(checkudeletedata==true) 
+Toast.makeText(MainActivity.this, "Entry Deleted", 
+Toast.LENGTH_SHORT).show(); 
+else 
+Toast.makeText(MainActivity.this, "Entry Not Deleted", 
+Toast.LENGTH_SHORT).show(); 
+}        }); 
+view.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View view) { 
+Cursor res = DB.getdata(); 
+if(res.getCount()==0){ 
+Toast.makeText(MainActivity.this, "No Entry Exists", 
+Toast.LENGTH_SHORT).show(); 
+return; 
+} 
+StringBuffer buffer = new StringBuffer(); 
+while(res.moveToNext()){ 
+buffer.append("Name :"+res.getString(0)+"\n"); 
+buffer.append("Contact :"+res.getString(1)+"\n"); 
+buffer.append("Date of Birth 
+:"+res.getString(2)+"\n\n"); 
+} 
+AlertDialog.Builder builder = new 
+AlertDialog.Builder(MainActivity.this); 
+builder.setCancelable(true); 
+builder.setTitle("User Entries"); 
+builder.setMessage(buffer.toString()); 
+builder.show(); 
+}        }); 
+} 
+} 
+DBHelper.java  
+Right-click ->New->Java Class 
+package com.example.program6; 
+import android.content.ContentValues; 
+import android.content.Context; 
+import android.database.Cursor; 
+import android.database.sqlite.SQLiteDatabase; 
+import android.database.sqlite.SQLiteOpenHelper; 
+import androidx.annotation.Nullable; 
+public class DBHelper extends SQLiteOpenHelper { 
+public DBHelper(Context context) { 
+super(context, "Userdata.db", null, 1); 
+} 
+@Override 
+public void onCreate(SQLiteDatabase DB) { 
+DB.execSQL("create Table Userdetails(name TEXT primary key, contact 
+TEXT, dob TEXT)"); 
+} 
+@Override 
+public void onUpgrade(SQLiteDatabase DB, int i, int ii) { 
+DB.execSQL("drop Table if exists Userdetails"); 
+} 
+public Boolean insertuserdata(String name, String contact, String dob) 
+{ 
+        SQLiteDatabase DB = this.getWritableDatabase(); 
+        ContentValues contentValues = new ContentValues(); 
+        contentValues.put("name", name); 
+        contentValues.put("contact", contact); 
+        contentValues.put("dob", dob); 
+        long result=DB.insert("Userdetails", null, contentValues); 
+        if(result==-1){ 
+            return false; 
+        }else{ 
+            return true; 
+        } 
+    } 
+    public Boolean updateuserdata(String name, String contact, String dob) 
+    { 
+        SQLiteDatabase DB = this.getWritableDatabase(); 
+        ContentValues contentValues = new ContentValues(); 
+        contentValues.put("contact", contact); 
+        contentValues.put("dob", dob); 
+        Cursor cursor = DB.rawQuery("Select * from Userdetails where name = 
+?", new 
+                String[]{name}); 
+        if (cursor.getCount() > 0) { 
+            long result = DB.update("Userdetails", contentValues, "name=?", 
+new 
+                    String[]{name}); 
+            if (result == -1) { 
+                return false; 
+            } else { 
+                return true; 
+            } 
+        } else { 
+            return false; 
+        } 
+    } 
+    public Boolean deletedata (String name) 
+    { 
+        SQLiteDatabase DB = this.getWritableDatabase(); 
+        Cursor cursor = DB.rawQuery("Select * from Userdetails where name = 
+?", new 
+                String[]{name}); 
+        if (cursor.getCount() > 0) { 
+            long result = DB.delete("Userdetails", "name=?", new 
+String[]{name}); 
+            if (result == -1) { 
+                return false; 
+            } else { 
+                return true; 
+            } 
+        } else { 
+            return false; 
+        } 
+    } 
+ 
+    public Cursor getdata () 
+    { 
+        SQLiteDatabase DB = this.getWritableDatabase(); 
+        Cursor cursor = DB.rawQuery("Select * from Userdetails", null); 
+        return cursor; 
+    } 
+} 
+ 
+Output: 
+10. Develop an app  
+a. Capture a photo and store it into SDCard utilizing the Camera functionality.  
+b. Display image by selecting from the gallery or storage 
+a. Capture a photo and store it into SDCard utilizing the Camera functionality.  
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:gravity="center_horizontal" 
+android:orientation="vertical" 
+tools:context=".MainActivity"> 
+<ImageView 
+android:id="@+id/imgCamera" 
+android:layout_width="400dp" 
+android:layout_height="240dp" 
+android:scaleType="fitXY" /> 
+<Button 
+android:id="@+id/btnCamera" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_marginTop="21dp" 
+android:text="Open Camera"/> 
+</LinearLayout> 
+MainActivity.java 
+package com.example.program7; 
+import androidx.activity.result.ActivityResult; 
+import androidx.activity.result.ActivityResultCallback; 
+import androidx.activity.result.ActivityResultLauncher; 
+import androidx.activity.result.contract.ActivityResultContracts; 
+import androidx.annotation.Nullable; 
+import androidx.appcompat.app.AppCompatActivity; 
+import android.content.Intent; 
+import android.graphics.Bitmap; 
+import android.os.Bundle; 
+import android.provider.MediaStore; 
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.ImageView; 
+public class MainActivity extends AppCompatActivity { 
+private final int CAMERA_REQ_CODE = 100; 
+ImageView imgCamera; 
+ActivityResultLauncher<Intent> activityResultLauncher; 
+@Override 
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main); 
+imgCamera = findViewById(R.id.imgCamera); 
+Button btnCamera = findViewById(R.id.btnCamera); 
+activityResultLauncher = registerForActivityResult(new 
+ActivityResultContracts.StartActivityForResult(), new 
+ActivityResultCallback<ActivityResult>() { 
+@Override 
+public void onActivityResult(ActivityResult result) { 
+if (result.getResultCode() == RESULT_OK) { 
+if (result.getResultCode() == CAMERA_REQ_CODE) 
+{ 
+//for camera 
+Bitmap img = (Bitmap) 
+(result.getData().getExtras().get("data")); 
+imgCamera.setImageBitmap(img); 
+} 
+} 
+} 
+}); 
+btnCamera.setOnClickListener(new View.OnClickListener() { 
+@Override 
+public void onClick(View view) { 
+Intent iCamera = new 
+Intent(MediaStore.ACTION_IMAGE_CAPTURE); 
+activityResultLauncher.launch(iCamera); 
+//  startActivityForResult(iCamera, CAMERA_REQ_CODE); 
+} 
+}); 
+} 
+} 
+b) Display image by selecting from the gallery or storage 
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:orientation="vertical" 
+tools:context=".MainActivity" 
+tools:ignore="ExtraText"> 
+<Button 
+android:id="@+id/buttonSelectedImage" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:text="select_image"/> 
+<ImageView 
+android:id="@+id/selectedImage" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:adjustViewBounds="true" 
+android:contentDescription="@string/app_name" /> 
+android:adjustViewBounds="true" 
+android:contentDescription="@string/app_name" /> 
+</LinearLayout> 
+MainActivity.java 
+package com.example.program7a; 
+import androidx.activity.result.ActivityResultLauncher; 
+import androidx.annotation.Nullable; 
+import androidx.appcompat.app.AppCompatActivity; 
+import androidx.core.app.ActivityCompat; 
+import androidx.core.content.ContextCompat; 
+import android.Manifest; 
+import android.content.Intent; 
+import android.content.pm.PackageManager; 
+import android.graphics.Bitmap; 
+import android.graphics.BitmapFactory; 
+import android.net.Uri; 
+import android.os.Bundle; 
+import android.provider.MediaStore; 
+import android.view.View; 
+import android.widget.ImageView; 
+import android.widget.Toast; 
+import java.io.InputStream; 
+public class MainActivity extends AppCompatActivity 
+{ 
+private static final int REQUEST_CODE_STORAGE_PERMISSION = 1; 
+private static final int REQUEST_CODE_SELECT_IMAGE = 2; 
+    private ImageView imageSelected; 
+    ActivityResultLauncher<Intent> activityResultLauncher; 
+ 
+    @Override 
+    protected void onCreate(Bundle savedInstanceState) { 
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+        imageSelected = findViewById(R.id.selectedImage); 
+ 
+        findViewById(R.id.buttonSelectedImage).setOnClickListener(new 
+View.OnClickListener() { 
+            @Override 
+            public void onClick(View view) { 
+                if (ContextCompat.checkSelfPermission( 
+                        getApplicationContext(), 
+Manifest.permission.READ_EXTERNAL_STORAGE 
+                ) != PackageManager.PERMISSION_GRANTED) { 
+                    ActivityCompat.requestPermissions( 
+                            MainActivity.this, 
+                            new 
+String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 
+                            REQUEST_CODE_STORAGE_PERMISSION); 
+                } else { 
+                    selectImage(); 
+ 
+                } 
+            } 
+        }); 
+ 
+    } 
+ 
+ 
+    private void selectImage() 
+    { 
+        Intent intent = new 
+                
+Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI); 
+        if(intent.resolveActivity(getPackageManager()) != null){ 
+            startActivityForResult(intent,REQUEST_CODE_SELECT_IMAGE); 
+        } 
+    } 
+    @Override 
+    public void onRequestPermissionsResult(int requestCode,@Nullable 
+String[] 
+            permissions,@Nullable int[] grantResults) 
+    { 
+        
+super.onRequestPermissionsResult(requestCode,permissions,grantResults); 
+ 
+        if(requestCode == REQUEST_CODE_STORAGE_PERMISSION && 
+grantResults.length > 0) 
+        { 
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) 
+            { 
+                selectImage(); 
+            } 
+            else 
+            { 
+                Toast.makeText(this, "Permission Denied", 
+Toast.LENGTH_SHORT).show(); 
+            } 
+} 
+} 
+@Override 
+protected void onActivityResult(int requestCode, int resultCode, 
+@Nullable Intent data) { 
+super.onActivityResult(requestCode, resultCode, data); 
+if(requestCode == REQUEST_CODE_SELECT_IMAGE && resultCode == 
+RESULT_OK){ 
+if(data != null){ 
+Uri selectedImageUri = data.getData(); 
+if(selectedImageUri != null){ 
+try{ 
+InputStream inputStream = 
+getContentResolver().openInputStream(selectedImageUri); 
+Bitmap bitmap = 
+BitmapFactory.decodeStream(inputStream); 
+imageSelected.setImageBitmap(bitmap); 
+}catch (Exception exception){ 
+Toast.makeText(this,exception.getMessage(), 
+Toast.LENGTH_SHORT).show(); 
+} 
+} 
+} 
+} 
+} 
+} 
+AndroidManifest.xml 
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> 
