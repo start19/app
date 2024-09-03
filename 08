@@ -1,0 +1,61 @@
+activity_main.xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+ <TextView
+ android:id="@+id/titlepage"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:layout_gravity="center"
+ android:text="ListView Demo"
+ android:layout_marginTop="110dp"
+ android:textColor="#000" />
+ <ListView
+ android:id="@+id/simpleListView"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:divider="#000"
+ android:dividerHeight="2dp"
+ android:layout_marginTop="200dp"/>
+</RelativeLayout>
+activity_list_view.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical">
+ 
+ <TextView
+ android:id="@+id/textView"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:layout_gravity="center"
+ android:textColor="#000" />
+</LinearLayout>
+
+MainActivity.java
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+ // Array of strings...
+ ListView simpleList;
+ String courseList[] = {"C-Programming", "Data Structure", "Database", 
+"Python",
+ "Java", "Operating System", "Compiler Design", "Android 
+Development"};
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ EdgeToEdge.enable(this);
+ setContentView(R.layout.activity_main);
+ simpleList = (ListView) findViewById(R.id.simpleListView);
+ ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, 
+R.layout.activity_list_view, R.id.textView, courseList);
+ simpleList.setAdapter(arrayAdapter);
+ }
+}
