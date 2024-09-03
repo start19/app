@@ -1,0 +1,158 @@
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+<TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="20dp"
+ android:layout_marginTop="100dp"
+ android:text="Send Data From One Activity to Another Activity"
+ android:textColor="#E91E63"
+ android:textSize="18sp"
+ android:textStyle="bold">
+</TextView>
+ <EditText
+ android:id="@+id/name"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="165dp"
+ android:layout_marginTop="200dp"
+ android:text="Name"
+ >
+ </EditText>
+ <EditText
+ android:id="@+id/usn"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="170dp"
+ android:layout_marginTop="250dp"
+ android:text="USN"
+ >
+ </EditText>
+ <EditText
+ android:id="@+id/collegeName"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="140dp"
+ android:layout_marginTop="300dp"
+ android:text="College Name"
+ >
+ </EditText>
+ <Button
+ android:id="@+id/SendData"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="150dp"
+ android:layout_marginTop="400dp"
+ android:text="Send Data">
+ </Button>
+</RelativeLayout>
+
+
+MainActivity.java
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+ EditText name;
+ EditText usn;
+ EditText collegeName;
+ Button sendBtn;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ EdgeToEdge.enable(this);
+ setContentView(R.layout.activity_main);
+ name = findViewById(R.id.name);
+ usn = findViewById(R.id.usn);
+ collegeName = findViewById(R.id.collegeName);
+ sendBtn = findViewById(R.id.SendData);
+ sendBtn.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ String strName=name.getText().toString();
+ String strUsn=usn.getText().toString();
+ String strCollegeName=collegeName.getText().toString();
+ Intent intent =new Intent(getApplicationContext(), 
+SecondActivity.class);
+ intent.putExtra("name",strName);
+ intent.putExtra("usn",strUsn);
+ intent.putExtra("collegeName",strCollegeName);
+ startActivity(intent);
+ }
+ });
+ }
+}
+
+
+activity_main2.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".SecondActivity">
+ <TextView
+ android:id="@+id/receiver_name_id"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="200dp"
+ android:layout_marginTop="200dp">
+ </TextView>
+ <TextView
+ android:id="@+id/receiver_usn_id"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="200dp"
+ android:layout_marginTop="250dp">
+ </TextView>
+ <TextView
+ android:id="@+id/receiver_collegeName_id"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="200dp"
+ android:layout_marginTop="300dp"
+ >
+ </TextView>
+</RelativeLayout>
+
+
+SecondActivity.java
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+public class SecondActivity extends AppCompatActivity{
+ TextView receiver_name_id;
+ TextView receiver_usn_id;
+ TextView receiver_collegeName_id;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main2);
+ receiver_name_id = findViewById(R.id.receiver_name_id);
+ receiver_usn_id = findViewById(R.id.receiver_usn_id);
+ receiver_collegeName_id = 
+findViewById(R.id.receiver_collegeName_id);
+ Intent intent = getIntent();
+ String strName = intent.getStringExtra("name");
+ receiver_name_id.setText(strName);
+ String strUsn = intent.getStringExtra("usn");
+ receiver_usn_id.setText(strUsn);
+ String strCollegeName = intent.getStringExtra("collegeName");
+ receiver_collegeName_id.setText(strCollegeName);
+ }
+}
+
+AndroidManifest.xml
+<activity android:name=".SecondActivity"></activity>
