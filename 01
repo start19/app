@@ -1,0 +1,93 @@
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:background="#FFFFFF"
+ tools:context=".MainActivity">
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="200dp"
+ android:layout_marginLeft="30dp"
+ android:text="Nitte Meenakshi Institute Technology"
+ android:textColor="#E91E63"
+ android:textSize="20sp"
+ android:textStyle="bold" />
+ <ImageView
+ android:id="@+id/imageView3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginLeft="80dp"
+ android:layout_marginBottom="495dp"
+ app:srcCompat="@drawable/nittelogo">
+ </ImageView>
+ <View
+ android:id="@+id/view1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:background="#4444"
+ android:layout_alignParentBottom="true"
+ android:layout_marginBottom="487dp"
+ />
+ <TextView
+ android:id="@+id/textView2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="300dp"
+ android:layout_marginLeft="140dp"
+ android:text="Harsha B R"
+ android:textSize="24sp"
+ android:textStyle="bold" />
+ <TextView
+ android:id="@+id/textView3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="350dp"
+ android:layout_marginLeft="70dp"
+ android:text="Assistant Professor-ISE"
+ android:textSize="24sp" />
+ <TextView
+ android:id="@+id/textView4"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="400dp"
+ android:layout_marginLeft="30dp"
+ android:text="Address:Yelahanka, | Bangalore - 560 064"
+ android:textAlignment="center"
+ android:textSize="24sp" />
+ <TextView
+ android:id="@+id/textView5"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="450dp"
+ android:layout_marginLeft="90dp"
+ android:text="Ph No: 9108380566"
+ android:textSize="24sp" />
+ <TextView
+ android:id="@+id/textView6"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="500dp"
+ android:layout_marginLeft="50dp"
+ android:text="Email Id: harsha.br@nmit.ac.in"
+ android:textAlignment="center"
+ android:textSize="24sp" />
+</RelativeLayout>
+
+
+MainActivity.java
+import android.os.Bundle;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ EdgeToEdge.enable(this);
+ setContentView(R.layout.activity_main);
+ }
+}
