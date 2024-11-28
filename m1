@@ -1,0 +1,18 @@
+x = pi / 5;
+
+
+lhs = cos(x / 2)^2;
+
+
+rhs = (tan(x) + sin(x)) / (2 * tan(x));
+
+
+disp(['LHS = ', num2str(lhs)]);
+disp(['RHS = ', num2str(rhs)]);
+
+
+if abs(lhs - rhs) < 1e-6
+    disp('The identity is verified.');
+else
+    disp('The identity is not verified.');
+end
